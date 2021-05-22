@@ -1,10 +1,22 @@
 name: Do things every 5 minutes
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "* * * * *"
     
 jobs:
-  stale:
+  build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+
+      - name: checkout repo content
+        uses: actions/checkout@v2 # checkout the repository content to github runner
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7.7' # install the python version needed
+          
+      - name: install python packages
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
