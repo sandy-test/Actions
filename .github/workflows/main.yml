@@ -11,7 +11,7 @@ jobs:
       - name: checkout repo content
         uses: actions/checkout@v2 # checkout the repository content to github runner
         with:
-         name: itissandeep98/TelegramBot
+         repository: itissandeep98/TelegramBot
          token: ${{secrets.ACCESS_TOKEN}}
 
       - name: setup python
